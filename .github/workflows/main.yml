@@ -1,0 +1,17 @@
+name: Build 
+run-name: Build ${{ github.head_ref || github.ref_name }} by @ ${{ github.actor }}
+on:  
+  workflow_dispatch:
+  
+env:
+  ARTIFACT_NAME: myartifact
+  JSON_VAL: ${{ toJSON(github) }}
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Echo
+      run: echo $JSON_VAL  
